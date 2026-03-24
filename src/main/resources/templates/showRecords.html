@@ -1,0 +1,64 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User Data Table</title>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- DataTables CSS -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> -->
+    <link rel="stylesheet" href="css/dataTables.min.css">
+    <!-- DataTables JS -->
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+    <script src="js/dataTables.min.js"></script>
+    
+    <!-- JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.23.0/sweetalert2.min.js"></script>
+
+<!-- CSS (optional, for styling) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.23.0/sweetalert2.min.css">
+    
+    
+</head>
+<body>
+
+<h2>Employee List</h2>
+
+<table id="userTable" class="display">
+	  <thead>
+        <tr>
+            <th>id</th>
+            <th>email</th>
+            <th>user_name</th>
+            <th>password</th>
+            <th>Action</th>
+        </tr>
+    	</thead>
+        <tbody>
+	        <tr th:each="user:${listUsers}">
+	            <td th:text="${user.id}" ></td>
+	            <td th:text="${user.email}" ></td>
+	            <td th:text="${user.user_name}" ></td>
+	            <td th:text="${user.password}" ></td>
+	            <td>
+	            	<a th:href="@{/showFormForUpdate/{id}(id=${user.id})}">Edit</a>
+            		<a th:href="@{/deleteUser/{id}(id=${user.id})}">Delete</a>
+	            </td>            
+	        </tr>
+        </tbody>
+	</table>
+	<button type="button" onclick="sweetAlert();">Click Me</button>
+<script>
+	new DataTable("#userTable");
+</script>
+<script>
+		function sweetAlert(){
+			Swal.fire({
+				  title: "Good job!",
+				  text: "You clicked the button!",
+				  icon: "success"
+				});			
+		}
+</script>
+</body>
+</html>

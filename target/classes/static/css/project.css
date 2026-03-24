@@ -1,0 +1,17 @@
+body {
+	margin: 0px;
+}
+
+.header {
+	background-color: skyblue;
+	height: 100px;
+	text-align: center;
+	font-size: 30pt;
+}
+
+.footer {
+	background-color: skyblue;
+	height: 25px;
+	text-align: center;
+	font-size: small;
+}
